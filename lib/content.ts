@@ -107,7 +107,7 @@ export const pillars = [
 ];
 
 export const portfolioFilters: { key: "all" | ServiceKey; label: string }[] = [
-  { key: "all", label: "All work" },
+  { key: "all", label: "All Work" },
   { key: "performance", label: "Performance" },
   { key: "branding", label: "Branding & Web" },
   { key: "packaging", label: "Packaging" },
@@ -118,23 +118,23 @@ export const portfolioFilters: { key: "all" | ServiceKey; label: string }[] = [
 
 // PLACEHOLDER projects — swap with real work and images.
 export const portfolio: { id: number; cat: ServiceKey; title: string; tag: string; grad: string }[] = [
-  { id: 1, cat: "packaging", title: "Packaging project", tag: "Packaging Design", grad: "grad-peach" },
-  { id: 2, cat: "realestate", title: "Residential launch film", tag: "Real Estate Media", grad: "grad-aqua" },
-  { id: 3, cat: "performance", title: "Lead-gen campaign", tag: "Performance Marketing", grad: "grad-lime" },
-  { id: 4, cat: "events", title: "Brand launch event", tag: "Event Design", grad: "grad-sky" },
-  { id: 5, cat: "video", title: "Brand film", tag: "Video Production", grad: "grad-ink" },
-  { id: 6, cat: "branding", title: "Identity & website", tag: "Branding & Web", grad: "grad-lime" },
-  { id: 7, cat: "packaging", title: "Label system", tag: "Packaging Design", grad: "grad-sky" },
-  { id: 8, cat: "video", title: "Product ad spot", tag: "Video Production", grad: "grad-peach" },
-  { id: 9, cat: "realestate", title: "Drone walkthrough", tag: "Real Estate Media", grad: "grad-ink" },
+  { id: 1, cat: "packaging", title: "Packaging Project", tag: "Packaging Design", grad: "grad-peach" },
+  { id: 2, cat: "realestate", title: "Residential Launch Film", tag: "Real Estate Media", grad: "grad-aqua" },
+  { id: 3, cat: "performance", title: "Lead-Gen Campaign", tag: "Performance Marketing", grad: "grad-lime" },
+  { id: 4, cat: "events", title: "Brand Launch Event", tag: "Event Design", grad: "grad-sky" },
+  { id: 5, cat: "video", title: "Brand Film", tag: "Video Production", grad: "grad-ink" },
+  { id: 6, cat: "branding", title: "Identity & Website", tag: "Branding & Web", grad: "grad-lime" },
+  { id: 7, cat: "packaging", title: "Label System", tag: "Packaging Design", grad: "grad-sky" },
+  { id: 8, cat: "video", title: "Product Ad Spot", tag: "Video Production", grad: "grad-peach" },
+  { id: 9, cat: "realestate", title: "Drone Walkthrough", tag: "Real Estate Media", grad: "grad-ink" },
 ];
 
 // PLACEHOLDER case studies — metrics shown as XX until real numbers are supplied.
 export const caseStudies: { client: string; headline: string; metric: string; sub: string; grad: string; rot: number }[] = [
-  { client: "Client A", headline: "Reduced cost per lead by", metric: "XX%", sub: "Performance Marketing", grad: "grad-lime", rot: -3 },
-  { client: "Client B", headline: "Grew organic enquiries by", metric: "XX%", sub: "SEO & AI Search", grad: "grad-ink", rot: 2 },
-  { client: "Client C", headline: "Sold out launch inventory in", metric: "XX days", sub: "Real Estate Media", grad: "grad-aqua", rot: -2 },
-  { client: "Client D", headline: "Lifted shelf pick-up by", metric: "XX%", sub: "Packaging Design", grad: "grad-peach", rot: 3 },
+  { client: "Client A", headline: "Reduced Cost per Lead by", metric: "XX%", sub: "Performance Marketing", grad: "grad-lime", rot: -3 },
+  { client: "Client B", headline: "Grew Organic Enquiries by", metric: "XX%", sub: "SEO & AI Search", grad: "grad-ink", rot: 2 },
+  { client: "Client C", headline: "Sold Out Launch Inventory in", metric: "XX days", sub: "Real Estate Media", grad: "grad-aqua", rot: -2 },
+  { client: "Client D", headline: "Lifted Shelf Pick-Up by", metric: "XX%", sub: "Packaging Design", grad: "grad-peach", rot: 3 },
   { client: "Client E", headline: "Reached", metric: "XXL views", sub: "Video Production", grad: "grad-sky", rot: -2 },
 ];
 
@@ -150,21 +150,21 @@ export const process = [
 export const insights: { tags: string[]; title: string; excerpt: string; grad: string; read: string }[] = [
   {
     tags: ["SEO", "AI Search"],
-    title: "How to get your brand cited by ChatGPT and Gemini",
+    title: "How to Get Your Brand Cited by ChatGPT and Gemini",
     excerpt: "What AI engines look for, and the content changes that make a brand easier to cite.",
     grad: "grad-sky",
     read: "6 min read",
   },
   {
     tags: ["Performance", "Meta Ads"],
-    title: "Why your cost per lead is rising, and how to fix it",
+    title: "Why Your Cost per Lead Is Rising, and How to Fix It",
     excerpt: "Creative fatigue, weak landing pages and audience overlap: a practical checklist.",
     grad: "grad-lime",
     read: "5 min read",
   },
   {
     tags: ["Real Estate", "Video"],
-    title: "What makes a property video actually sell",
+    title: "What Makes a Property Video Actually Sell",
     excerpt: "Shot lists, drone sequences and pacing that turn viewers into site visits.",
     grad: "grad-aqua",
     read: "4 min read",

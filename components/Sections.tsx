@@ -5,6 +5,35 @@ import { serviceIcons } from "./icons";
 
 const wrap = "mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8";
 
+/* ───────── Diagonal services ticker (sits under the hero) ───────── */
+export function ServiceTicker() {
+  // Ticker-only extra on top of the eight services
+  const items = [...services.map((s) => s.title), "AI Websites"];
+  const row = (hidden: boolean) => (
+    <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
+      {items.map((title) => (
+        <li key={title + hidden} className="flex items-center">
+          <span className="whitespace-nowrap font-display text-[clamp(1.3rem,3vw,2.4rem)] font-semibold leading-[1.2] tracking-[-0.02em] text-[#f5f5f0]/90">
+            {title}
+          </span>
+          <XMark className="mx-6 h-5 w-5 shrink-0 text-[#cbdc3f] sm:mx-9 sm:h-7 sm:w-7" />
+        </li>
+      ))}
+    </ul>
+  );
+  return (
+    <section aria-label="Our services" className="overflow-hidden py-10 md:py-16">
+      {/* Straight on phones, slightly diagonal from tablet up */}
+      <div className="marquee ticker-band py-[1.4rem] md:-mx-[6%] md:w-[112%] md:-rotate-2 md:py-7">
+        <div className="ticker-track flex w-max">
+          {row(false)}
+          {row(true)}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ───────── Client logo marquee (PLACEHOLDER) ───────── */
 export function Marquee() {
   const items = Array.from({ length: 8 }, (_, i) => `Client logo ${i + 1}`);
@@ -44,7 +73,7 @@ export function Services() {
     <section id="services" className={`${wrap} py-20 md:py-28`}>
       <SectionHead
         eyebrow="What we do"
-        title="Eight services. One team. Zero hand-offs."
+        title="Eight Services. One Team. Zero Hand-Offs."
         sub="Pick a single service or put the whole stack to work. Either way you get one accountable team."
       />
       <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -82,7 +111,7 @@ export function CaseStudies() {
       <div className={wrap}>
         <SectionHead
           eyebrow="Case studies"
-          title={<span id="cases-title">Wins, in numbers.</span>}
+          title={<span id="cases-title">Wins, in Numbers.</span>}
           sub="Sample layout with placeholder figures. Real results go here once you share them."
         />
       </div>
@@ -120,7 +149,7 @@ export function Process() {
     <section id="process" className={`${wrap} py-20 md:py-28`}>
       <SectionHead
         eyebrow="How we work"
-        title="From first call to compounding results."
+        title="From First Call to Compounding Results."
         sub="A simple five-step process, so you always know what happens next."
       />
       <ol className="grid gap-5 md:grid-cols-5">
@@ -146,9 +175,9 @@ export function Insights() {
     <section id="insights" className={`${wrap} py-20 md:py-28`}>
       <SectionHead
         eyebrow="Impactful insights"
-        title="Go further."
+        title="Go Further."
         sub="Practical thinking on growth, search and creative. Sample articles shown as placeholders."
-        action={<CtaLink href="#contact">Discuss your growth plan</CtaLink>}
+        action={<CtaLink href="#contact">Discuss Your Growth Plan</CtaLink>}
       />
       <ul className="grid gap-6 md:grid-cols-3">
         {insights.map((a, i) => (
@@ -201,7 +230,7 @@ export function Founder() {
               Founder story
             </p>
             <h2 className="text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.1]">
-              Built in Noida to bridge what brands have and what they could become.
+              Built in Noida to Bridge What Brands Have and What They Could Become.
             </h2>
             <div className="mt-6 space-y-4 text-sm text-muted">
               <p>
@@ -218,7 +247,7 @@ export function Founder() {
               </p>
             </div>
             <div className="mt-8">
-              <CtaLink href="#contact">Talk to the founder</CtaLink>
+              <CtaLink href="#contact">Talk to the Founder</CtaLink>
             </div>
           </Reveal>
         </div>
@@ -232,7 +261,7 @@ export function Faq() {
   return (
     <section id="faq" className={`${wrap} py-20 md:py-28`}>
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-        <SectionHead eyebrow="FAQs" title="Questions, answered." sub="Can’t find yours? Ask us on the strategy call." />
+        <SectionHead eyebrow="FAQs" title="Questions, Answered." sub="Can’t find yours? Ask us on the strategy call." />
         <div className="space-y-3">
           {faqs.map((f, i) => (
             <Reveal key={f.q} delay={i * 50}>

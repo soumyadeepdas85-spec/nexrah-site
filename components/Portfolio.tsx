@@ -13,7 +13,7 @@ export default function Portfolio() {
     <section id="work" className="mx-auto max-w-[1240px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
       <SectionHead
         eyebrow="Portfolio"
-        title="Selected work."
+        title="Selected Work."
         sub="Placeholder tiles. Replace with real projects and images from your portfolio."
       />
 

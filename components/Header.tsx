@@ -64,12 +64,12 @@ export default function Header() {
     >
       <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
         <a href="#top" aria-label="NexRah home" className="shrink-0">
-          <Logo className="h-8 w-auto sm:h-9" />
+          <Logo className="h-7 w-auto sm:h-8" />
         </a>
 
         <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
           {nav.map((n) => (
-            <a key={n.href} href={n.href} className="text-sm font-semibold transition hover:text-muted">
+            <a key={n.href} href={n.href} className="font-display text-[15px] font-medium transition hover:text-muted">
               {n.label}
             </a>
           ))}
@@ -78,7 +78,7 @@ export default function Header() {
         <div className="flex items-center gap-2">
           <ThemeToggle />
           <div className="hidden sm:block">
-            <CtaLink href="#contact">Book a free strategy call</CtaLink>
+            <CtaLink href="#contact">Let’s Talk Business</CtaLink>
           </div>
           <button
             type="button"
@@ -109,7 +109,7 @@ export default function Header() {
             ))}
           </ul>
           <div className="mt-6" onClick={() => setOpen(false)}>
-            <CtaLink href="#contact">Book a free strategy call</CtaLink>
+            <CtaLink href="#contact">Let’s Talk Business</CtaLink>
           </div>
         </nav>
       )}

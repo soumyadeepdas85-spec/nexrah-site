@@ -66,7 +66,7 @@ export default function LiveBackground() {
   }, []);
 
   return (
-    <div ref={root} className="live-bg" aria-hidden="true">
+    <div ref={root} className="live-bg grain" aria-hidden="true">
       <div data-blob className="blob blob-a" />
       <div data-blob className="blob blob-b" />
       <div data-blob className="blob blob-c" />

@@ -4,7 +4,9 @@ import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { CaseStudies, Faq, Founder, Insights, Marquee, Process, Services } from "@/components/Sections";
+import { CaseStudies, Faq, Founder, Insights, Marquee, Process, ServiceTicker, Services } from "@/components/Sections";
+
+const SHOW_CASE_STUDIES = false;
 
 export default function Home() {
   return (
@@ -16,14 +18,16 @@ export default function Home() {
       <Header />
       <main id="main">
         <Hero />
-        <Marquee />
+        <ServiceTicker />
         <Services />
         <Portfolio />
-        <CaseStudies />
+        {/* Case studies hidden for now: set SHOW_CASE_STUDIES to true to bring it back */}
+        {SHOW_CASE_STUDIES && <CaseStudies />}
         <Process />
         <Insights />
         <Founder />
         <Faq />
+        <Marquee />
         <Contact />
       </main>
       <Footer />

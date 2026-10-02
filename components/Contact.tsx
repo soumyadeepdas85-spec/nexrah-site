@@ -64,7 +64,7 @@ export default function Contact() {
             Free strategy call
           </p>
           <h2 className="text-[clamp(2rem,4.4vw,3.6rem)] font-light leading-[1.08] text-[#f5f5f0]">
-            Ready to bridge beyond next?
+            Ready to Bridge Beyond Next?
           </h2>
           <p className="mt-5 max-w-md text-sm text-[#b4b4ac]">
             Tell us about your goals. We will reply within one business day with a time for a free 30-minute
@@ -167,7 +167,7 @@ export default function Contact() {
                 <span className="dot" aria-hidden="true">
                   {status === "sending" ? <Loader2 size={18} className="animate-spin" /> : <ArrowUpRight size={18} strokeWidth={2.5} />}
                 </span>
-                {status === "sending" ? "Sending…" : "Book my free strategy call"}
+                {status === "sending" ? "Sending…" : "Let’s Talk Business"}
               </button>
               <p className="text-sm text-muted">We never share your details.</p>
             </div>

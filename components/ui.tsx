@@ -50,8 +50,8 @@ export function Reveal({
 export function Logo({ tagline = false, className = "h-9 w-auto" }: { tagline?: boolean; className?: string }) {
   const light = tagline ? "/brand/logo-light-tagline.svg" : "/brand/logo-light.svg";
   const dark = tagline ? "/brand/logo-dark-tagline.svg" : "/brand/logo-dark.svg";
-  const w = tagline ? 266 : 282;
-  const h = tagline ? 67 : 62;
+  const w = tagline ? 266 : 262;
+  const h = tagline ? 67 : 64;
   return (
     <>
       <Image src={light} alt="NexRah" width={w} height={h} className={`logo-light-only ${className}`} priority />

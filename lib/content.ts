@@ -2,7 +2,7 @@
 // client names, results, photos and founder details before launch.
 
 export const nav = [
-  { label: "Services", href: "#services" },
+  { label: "Capabilities", href: "#services" },
   { label: "Work", href: "#work" },
   { label: "Process", href: "#process" },
   { label: "Insights", href: "#insights" },

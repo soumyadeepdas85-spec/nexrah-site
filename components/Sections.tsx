@@ -1,7 +1,8 @@
-import { ArrowUpRight, Check, Plus } from "lucide-react";
+import { ArrowUpRight, Plus } from "lucide-react";
 import { caseStudies, faqs, insights, process, services } from "@/lib/content";
 import { CtaLink, Reveal, SectionHead, XMark } from "./ui";
-import { serviceIcons } from "./icons";
+import Image from "next/image";
+import LogoWall from "./LogoWall";
 
 const wrap = "mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8";
 
@@ -22,7 +23,7 @@ export function ServiceTicker() {
     </ul>
   );
   return (
-    <section aria-label="Our services" className="overflow-hidden py-10 md:py-16">
+    <section aria-label="Our capabilities" className="overflow-hidden py-10 md:py-16">
       {/* Straight on phones, slightly diagonal from tablet up */}
       <div className="marquee ticker-band py-[1.4rem] md:-mx-[6%] md:w-[112%] md:-rotate-2 md:py-7">
         <div className="ticker-track flex w-max">
@@ -34,71 +35,87 @@ export function ServiceTicker() {
   );
 }
 
-/* ───────── Client logo marquee (PLACEHOLDER) ───────── */
-export function Marquee() {
-  const items = Array.from({ length: 8 }, (_, i) => `Client logo ${i + 1}`);
-  const row = (hidden: boolean) => (
-    <ul className="flex shrink-0 items-center gap-6 pr-6" aria-hidden={hidden || undefined}>
-      {items.map((t) => (
-        <li
-          key={t + hidden}
-          className="flex h-16 w-44 items-center justify-center rounded-2xl border border-dashed border-line text-sm font-bold uppercase tracking-widest text-muted"
-        >
-          {t}
-        </li>
-      ))}
-    </ul>
-  );
+/* ───────── Clients: logo wall (PLACEHOLDER logos) ───────── */
+export function Clients() {
   return (
-    <section aria-label="Clients (placeholder logos)" className="py-12">
-      <p className="mb-6 text-center text-sm font-bold uppercase tracking-[0.16em] text-muted">
-        Trusted by growing brands · placeholder logos
-      </p>
-      <div
-        className="marquee overflow-hidden"
-        style={{ maskImage: "linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent)" }}
-      >
-        <div className="marquee-track flex w-max">
-          {row(false)}
-          {row(true)}
+    <section aria-label="Clients (placeholder logos)" className={`${wrap} py-20 md:py-28`}>
+      <Reveal className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
+        <div>
+          <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( Trusted By )</p>
+          <h2 className="mt-6 text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
+            <span className="block">Trusted by</span>
+            <span className="block text-fg/55">Growing Brands.</span>
+          </h2>
         </div>
-      </div>
+        <p className="font-mono text-[12px] uppercase leading-relaxed tracking-[0.18em] text-muted md:text-right">
+          Placeholder logos
+          <br />
+          Swap in real clients
+        </p>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <LogoWall />
+      </Reveal>
+
+      <Reveal delay={200} className="mt-8 flex flex-wrap items-center justify-between gap-4">
+        <p className="text-sm text-muted">Your brand could be next.</p>
+        <a
+          href="#contact"
+          className="group inline-flex items-center gap-2 font-display text-lg font-semibold underline decoration-accent decoration-2 underline-offset-8 transition hover:decoration-[3px]"
+        >
+          Let&rsquo;s Talk Business
+          <ArrowUpRight size={20} aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </a>
+      </Reveal>
     </section>
   );
 }
 
-/* ───────── Services ───────── */
+/* ───────── Capabilities: open list, hairlines, no heavy blocks ───────── */
 export function Services() {
   return (
     <section id="services" className={`${wrap} py-20 md:py-28`}>
-      <SectionHead
-        eyebrow="What we do"
-        title="Eight Services. One Team. Zero Hand-Offs."
-        sub="Pick a single service or put the whole stack to work. Either way you get one accountable team."
-      />
-      <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {services.map((s, i) => {
-          const Icon = serviceIcons[s.key];
-          return (
-            <Reveal as="li" key={s.key} delay={(i % 4) * 80}>
-              <article className="group flex h-full flex-col rounded-[24px] bg-surface p-6 transition duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow)]">
-                <span className={`${s.grad} mb-6 grid h-14 w-14 place-items-center rounded-2xl`}>
-                  <Icon size={26} aria-hidden strokeWidth={1.8} />
-                </span>
-                <h3 className="text-xl font-normal leading-snug">{s.title}</h3>
-                <p className="mt-3 text-sm text-muted">{s.blurb}</p>
-                <ul className="mt-5 space-y-2 border-t border-line pt-5 text-sm font-semibold">
+      <Reveal>
+        <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( What We Do )</p>
+        <h2 className="mt-6 max-w-4xl text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
+          <span className="block">Eight Capabilities.</span>
+          <span className="block text-fg/55">One Team. Zero Hand-Offs.</span>
+        </h2>
+        <p className="mt-6 max-w-xl text-sm text-muted">
+          Pick a single service or put the whole stack to work. Either way you get one accountable team.
+        </p>
+      </Reveal>
+
+      <ul className="mt-14 border-t border-[color:var(--line)] lg:mt-20">
+        {services.map((s, i) => (
+          <Reveal as="li" key={s.key} delay={i * 40}>
+            <article className="group grid gap-4 border-b border-[color:var(--line)] px-2 py-8 transition-colors duration-300 hover:bg-fg/[0.04] sm:px-4 lg:grid-cols-[4rem_1.15fr_1fr_3rem] lg:items-center lg:gap-10 lg:px-6 lg:py-10">
+              <span className="font-mono text-[13px] font-medium tracking-[0.12em] text-accent-text">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <h3 className="text-[clamp(1.6rem,3vw,2.7rem)] leading-tight tracking-[-0.025em] transition-transform duration-300 group-hover:translate-x-2">
+                {s.title}
+              </h3>
+              <div>
+                <p className="text-sm text-muted">{s.blurb}</p>
+                <ul className="mt-4 flex flex-wrap gap-2">
                   {s.points.map((p) => (
-                    <li key={p} className="flex items-start gap-2">
-                      <Check size={16} aria-hidden className="mt-0.5 shrink-0" strokeWidth={3} />
+                    <li key={p} className="rounded-full border border-[color:var(--line)] px-3 py-1 text-xs font-semibold">
                       {p}
                     </li>
                   ))}
                 </ul>
-              </article>
-            </Reveal>
-          );
-        })}
+              </div>
+              <span
+                aria-hidden="true"
+                className="hidden h-11 w-11 -translate-x-2 place-items-center rounded-full border border-[color:var(--line)] opacity-0 transition duration-300 group-hover:translate-x-0 group-hover:border-accent group-hover:bg-accent group-hover:text-on-accent group-hover:opacity-100 lg:grid"
+              >
+                <ArrowUpRight size={18} />
+              </span>
+            </article>
+          </Reveal>
+        ))}
       </ul>
     </section>
   );
@@ -147,21 +164,24 @@ export function CaseStudies() {
 export function Process() {
   return (
     <section id="process" className={`${wrap} py-20 md:py-28`}>
-      <SectionHead
-        eyebrow="How we work"
-        title="From First Call to Compounding Results."
-        sub="A simple five-step process, so you always know what happens next."
-      />
-      <ol className="grid gap-5 md:grid-cols-5">
+      <Reveal>
+        <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( How We Work )</p>
+        <h2 className="mt-6 max-w-4xl text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
+          <span className="block">From First Call to</span>
+          <span className="block text-fg/55">Compounding Results.</span>
+        </h2>
+        <p className="mt-6 max-w-xl text-sm text-muted">
+          A simple five-step process, so you always know what happens next.
+        </p>
+      </Reveal>
+
+      <ol className="mt-14 grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:mt-20 lg:grid-cols-5">
         {process.map((p, i) => (
-          <Reveal as="li" key={p.n} delay={i * 90}>
-            <div className="flex h-full flex-col rounded-[24px] border border-line p-6 transition hover:bg-surface">
-              <span className="mb-8 grid h-12 w-12 place-items-center rounded-full bg-accent font-display text-sm font-medium text-on-accent">
-                {p.n}
-              </span>
-              <h3 className="text-xl font-normal">{p.title}</h3>
-              <p className="mt-3 text-sm text-muted">{p.text}</p>
-            </div>
+          <Reveal as="li" key={p.n} delay={i * 110}>
+            <div className="rule-draw" aria-hidden="true" />
+            <p className="mt-8 font-mono text-[13px] font-medium tracking-[0.12em] text-accent-text">{p.n}</p>
+            <h3 className="mt-6 text-[clamp(1.5rem,2.2vw,2rem)] leading-tight tracking-[-0.02em]">{p.title}</h3>
+            <p className="mt-4 max-w-[17rem] text-sm leading-relaxed text-muted">{p.text}</p>
           </Reveal>
         ))}
       </ol>
@@ -216,11 +236,20 @@ export function Founder() {
       <div className={wrap}>
         <div className="grid items-center gap-10 overflow-hidden rounded-[32px] bg-surface p-6 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:p-12">
           <Reveal>
-            <div className="grad-ink relative aspect-[4/5] overflow-hidden rounded-[26px]">
-              <XMark className="absolute inset-0 m-auto h-3/4 w-3/4 text-accent opacity-25" />
-              <div className="absolute inset-x-0 bottom-0 p-6">
-                <p className="font-display text-2xl font-light">[Founder name]</p>
-                <p className="text-sm opacity-80">Founder, NexRah · photo placeholder</p>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] bg-[#17171c]">
+              <Image
+                src="/founder/founders.jpg"
+                alt="Portrait of the NexRah founders"
+                fill
+                sizes="(min-width: 768px) 40vw, 90vw"
+                className="object-cover object-[50%_40%]"
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 p-6 pt-24 text-[#f5f5f0]"
+                style={{ background: "linear-gradient(to top, rgba(23,23,28,0.85), transparent)" }}
+              >
+                <p className="font-display text-2xl font-bold">Soumyadeep AKA Jiko</p>
+                <p className="text-sm opacity-85">Founder, NexRah</p>
               </div>
             </div>
           </Reveal>

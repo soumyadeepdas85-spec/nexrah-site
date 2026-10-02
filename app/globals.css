@@ -27,7 +27,9 @@
   --blob-a: rgba(214, 232, 110, 0.85);
   --blob-b: rgba(184, 214, 204, 0.8);
   --blob-c: rgba(232, 238, 178, 0.75);
-  --glow: rgba(203, 220, 63, 0.5);
+  --spot: rgba(203, 220, 63, 0.4);
+  --blob-d: rgba(203, 220, 63, 0.55);
+  --ripple: rgba(203, 220, 63, 0.55);
   --grain: 0.9;
   color-scheme: light;
 }
@@ -55,7 +57,9 @@
   --blob-a: rgba(94, 106, 30, 0.85);
   --blob-b: rgba(38, 78, 68, 0.85);
   --blob-c: rgba(70, 80, 24, 0.55);
-  --glow: rgba(203, 220, 63, 0.24);
+  --spot: rgba(203, 220, 63, 0.16);
+  --blob-d: rgba(203, 220, 63, 0.24);
+  --ripple: rgba(203, 220, 63, 0.3);
   --grain: 0.5;
   color-scheme: dark;
 }
@@ -71,6 +75,7 @@
   --color-on-accent: var(--on-accent);
   --color-accent-text: var(--accent-text);
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-mono-jb), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -296,47 +301,49 @@ details > summary::-webkit-details-marker {
   background: var(--bg-base);
   transition: background-color 0.4s ease;
 }
-.live-bg .blob,
-.live-bg .glow {
-  position: absolute;
-  border-radius: 50%;
-  will-change: transform;
-}
 .live-bg .blob {
-  filter: blur(40px);
+  position: absolute;
+  left: calc(var(--cx) * 100%);
+  top: calc(var(--cy) * 100%);
+  border-radius: 50%;
+  filter: blur(46px);
+  will-change: transform, opacity;
+  transform: translate(-50%, -50%);
 }
 .blob-a {
-  width: 75vmax;
-  height: 75vmax;
-  left: -20vmax;
-  top: -28vmax;
-  background: radial-gradient(circle, var(--blob-a) 0%, transparent 62%);
+  width: 82vmax;
+  height: 62vmax;
+  background: radial-gradient(closest-side, var(--blob-a) 0%, transparent 100%);
 }
 .blob-b {
-  width: 70vmax;
-  height: 70vmax;
-  right: -22vmax;
-  top: -24vmax;
-  background: radial-gradient(circle, var(--blob-b) 0%, transparent 62%);
+  width: 80vmax;
+  height: 58vmax;
+  background: radial-gradient(closest-side, var(--blob-b) 0%, transparent 100%);
 }
 .blob-c {
-  width: 80vmax;
-  height: 80vmax;
-  left: 10vmax;
-  bottom: -50vmax;
-  background: radial-gradient(circle, var(--blob-c) 0%, transparent 62%);
+  width: 96vmax;
+  height: 62vmax;
+  background: radial-gradient(closest-side, var(--blob-c) 0%, transparent 100%);
 }
-.live-bg .glow {
+/* soft accent that sits inside the field and reacts the most; part of the gradient, not a separate bulb */
+.blob-d {
+  width: 54vmax;
+  height: 44vmax;
+  filter: blur(70px);
+  background: radial-gradient(closest-side, var(--blob-d) 0%, transparent 100%);
+}
+/* click / tap ripple: a soft ring that spreads through the gradient */
+.live-bg .ripple {
+  position: absolute;
   left: 0;
   top: 0;
-  width: 85vmax;
-  height: 85vmax;
-  background: radial-gradient(circle, var(--glow) 0%, transparent 65%);
-}
-@media (hover: none) {
-  .live-bg .glow {
-    display: none;
-  }
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.08);
+  background: radial-gradient(closest-side, transparent 55%, var(--ripple) 74%, transparent 100%);
+  will-change: transform, opacity;
 }
 
 /* Accent word in the hero: lime on dark; same ink as the headline on light (lime text is unreadable there) */
@@ -447,4 +454,48 @@ details > summary::-webkit-details-marker {
   border-top-color: rgba(203, 220, 63, 0.28);
   border-bottom-color: rgba(203, 220, 63, 0.28);
   box-shadow: none;
+}
+
+/* Process columns: the lime rule draws in from the left when the column scrolls into view */
+.rule-draw {
+  height: 1px;
+  background: var(--accent-text);
+  opacity: 0.7;
+  transform-origin: left;
+}
+.js .reveal .rule-draw {
+  transform: scaleX(0);
+  transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--d, 0ms) + 150ms);
+}
+.js .reveal.in .rule-draw {
+  transform: scaleX(1);
+}
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal .rule-draw {
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Logo wall spotlight */
+.logo-wall {
+  position: relative;
+}
+.logo-wall::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), var(--spot), transparent 70%);
+}
+.logo-wall:hover::before {
+  opacity: 1;
+}
+@media (hover: none) {
+  .logo-wall::before {
+    display: none;
+  }
 }

@@ -15,12 +15,12 @@ function chipSrc(name: string) {
 }
 
 /** Image slot sitting inline in the headline. Shows a placeholder until public/hero/<name>.jpg exists. */
-function Chip({ name }: { name: string }) {
+function Chip({ name, round = false }: { name: string; round?: boolean }) {
   const src = chipSrc(name);
   return (
     <span
       aria-hidden="true"
-      className="relative hidden h-[0.8em] w-[1.5em] sm:inline-block shrink-0 overflow-hidden rounded-[0.22em] bg-surface2 ring-1 ring-inset ring-[color:var(--line)]"
+      className={`relative hidden h-[0.92em] shrink-0 overflow-hidden bg-surface2 ring-1 ring-inset ring-[color:var(--line)] sm:inline-block ${round ? "aspect-square rounded-full" : "aspect-[3/4] rounded-[0.07em]"}`}
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -50,7 +50,7 @@ export default function Hero() {
               <span className="whitespace-nowrap">
                 What&rsquo;s <span className="hl">Next</span>
               </span>
-              <Chip name="chip-2" />
+              <Chip name="chip-2" round />
             </span>
           </h1>
           <Reveal delay={150} className="mx-auto mt-10 flex max-w-3xl flex-col items-center gap-6 md:mt-14">

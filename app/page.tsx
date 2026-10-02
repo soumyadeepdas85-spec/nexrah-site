@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import { CaseStudies, Faq, Founder, Insights, Marquee, Process, ServiceTicker, Services } from "@/components/Sections";
+import { CaseStudies, Faq, Founder, Insights, Clients, Process, ServiceTicker, Services } from "@/components/Sections";
 
 const SHOW_CASE_STUDIES = false;
 
@@ -27,7 +27,7 @@ export default function Home() {
         <Insights />
         <Founder />
         <Faq />
-        <Marquee />
+        <Clients />
         <Contact />
       </main>
       <Footer />

@@ -1,10 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const mono = JetBrains_Mono({
+  variable: "--font-mono-jb",
+  subsets: ["latin"],
+  weight: ["400", "500"],
   display: "swap",
 });
 
@@ -63,7 +70,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en-IN"
       data-theme="light"
       suppressHydrationWarning
-      className={`${bricolage.variable} ${inter.variable}`}
+      className={`${bricolage.variable} ${inter.variable} ${mono.variable}`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />

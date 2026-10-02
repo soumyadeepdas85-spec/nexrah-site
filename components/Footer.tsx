@@ -71,8 +71,8 @@ export default function Footer() {
             </ul>
           </nav>
 
-          <nav aria-label="Services">
-            <h2 className={head}>Services</h2>
+          <nav aria-label="Capabilities">
+            <h2 className={head}>Capabilities</h2>
             <ul className="space-y-3.5">
               {services.map((s) => (
                 <li key={s.key}>

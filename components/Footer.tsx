@@ -137,7 +137,7 @@ export default function Footer() {
               </ul>
             )}
             <p className="flex items-center gap-1.5 text-[#f5f5f0]">
-              Built with <Heart size={15} aria-label="love" className="heart-beat fill-[#ff6b6b] text-[#ff6b6b]" /> in India
+              Built with <Heart size={15} aria-label="love" className="heart-beat fill-[#ff6b6b] text-[#ff6b6b]" /> in Noida, India
             </p>
           </div>
           <NoidaClock />

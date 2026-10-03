@@ -20,7 +20,7 @@ function Chip({ name, round = false }: { name: string; round?: boolean }) {
   return (
     <span
       aria-hidden="true"
-      className={`relative hidden h-[0.92em] shrink-0 overflow-hidden bg-surface2 ring-1 ring-inset ring-[color:var(--line)] sm:inline-block ${round ? "aspect-square rounded-full" : "aspect-[3/4] rounded-[0.07em]"}`}
+      className={`chip relative hidden h-[0.92em] shrink-0 overflow-hidden bg-surface2 ring-1 ring-inset ring-[color:var(--line)] sm:inline-block ${round ? "aspect-square rounded-full" : "aspect-[3/4] rounded-[0.07em]"}`}
     >
       {src ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -37,10 +37,10 @@ function Chip({ name, round = false }: { name: string; round?: boolean }) {
 export default function Hero() {
   const row = "flex flex-nowrap items-center justify-center gap-x-[0.16em] whitespace-nowrap";
   return (
-    <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto max-w-[1360px] px-4 pb-10 pt-20 sm:px-6 md:pt-32 lg:px-8">
+    <section id="top" className="relative flex min-h-[calc(100svh-10rem)] items-center overflow-hidden">
+      <div className="mx-auto w-full max-w-[1360px] px-4 py-16 sm:px-6 md:py-24 lg:px-8">
         <div className="text-center">
-          <h1 className="font-display text-[8.6vw] sm:text-[clamp(2.4rem,7.4vw,7.4rem)] font-bold leading-[1.02] tracking-[-0.04em]">
+          <h1 className="hero-rise font-display text-[8.6vw] sm:text-[clamp(2.4rem,7.4vw,7.4rem)] font-bold leading-[1.02] tracking-[-0.04em]">
             <span className={row}>
               <span className="whitespace-nowrap">Brands Built</span>
               <Chip name="chip-1" />
@@ -53,7 +53,7 @@ export default function Hero() {
               <Chip name="chip-2" round />
             </span>
           </h1>
-          <Reveal delay={150} className="mx-auto mt-10 flex max-w-3xl flex-col items-center gap-6 md:mt-14">
+          <Reveal delay={150} className="mx-auto mt-14 flex max-w-3xl flex-col items-center gap-8 md:mt-20">
             <p className="font-display text-[clamp(1.35rem,3.2vw,2.4rem)] font-medium leading-tight tracking-[-0.02em]">
               Digital Narratives{" "}
               <span className="relative inline-block whitespace-nowrap">
@@ -83,8 +83,8 @@ export default function Hero() {
             </div>
           </Reveal>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <CtaLink href="#contact">Let’s Talk Business</CtaLink>
+          <div className="mt-14 flex flex-wrap items-center justify-center gap-3 md:mt-16">
+            <CtaLink href="#contact">Your Next Move</CtaLink>
             <CtaLink href="#work" ghost>
               See Our Work
             </CtaLink>

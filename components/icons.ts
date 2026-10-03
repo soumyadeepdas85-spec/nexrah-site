@@ -1,7 +1,8 @@
-import { BarChart3, Box, Building2, CalendarDays, Clapperboard, Palette, Search, Share2 } from "lucide-react";
+import { BarChart3, Globe, Box, Building2, CalendarDays, Clapperboard, Palette, Search, Share2 } from "lucide-react";
 import type { ServiceKey } from "@/lib/content";
 
 export const serviceIcons: Record<ServiceKey, typeof Search> = {
+  ai: Globe,
   performance: BarChart3,
   seo: Search,
   social: Share2,

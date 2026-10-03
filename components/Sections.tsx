@@ -8,8 +8,7 @@ const wrap = "mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8";
 
 /* ───────── Diagonal services ticker (sits under the hero) ───────── */
 export function ServiceTicker() {
-  // Ticker-only extra on top of the eight services
-  const items = [...services.map((s) => s.title), "AI Websites"];
+  const items = services.map((s) => s.title);
   const row = (hidden: boolean) => (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>
       {items.map((title) => (
@@ -23,7 +22,7 @@ export function ServiceTicker() {
     </ul>
   );
   return (
-    <section aria-label="Our capabilities" className="overflow-hidden py-10 md:py-16">
+    <section aria-label="Our capabilities" className="overflow-hidden py-12 md:py-20">
       {/* Straight on phones, slightly diagonal from tablet up */}
       <div className="marquee ticker-band py-[1.4rem] md:-mx-[6%] md:w-[112%] md:-rotate-2 md:py-7">
         <div className="ticker-track flex w-max">
@@ -38,13 +37,13 @@ export function ServiceTicker() {
 /* ───────── Clients: logo wall (PLACEHOLDER logos) ───────── */
 export function Clients() {
   return (
-    <section aria-label="Clients (placeholder logos)" className={`${wrap} py-20 md:py-28`}>
+    <section aria-label="Clients (placeholder logos)" className={`${wrap} py-24 md:py-36`}>
       <Reveal className="mb-12 flex flex-col justify-between gap-6 md:mb-16 md:flex-row md:items-end">
         <div>
           <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( Trusted By )</p>
           <h2 className="mt-6 text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
-            <span className="block">Trusted by</span>
-            <span className="block text-fg/55">Growing Brands.</span>
+            <span className="block line">Trusted by</span>
+            <span className="block line text-fg/55">Growing Brands.</span>
           </h2>
         </div>
         <p className="font-mono text-[12px] uppercase leading-relaxed tracking-[0.18em] text-muted md:text-right">
@@ -54,7 +53,7 @@ export function Clients() {
         </p>
       </Reveal>
 
-      <Reveal delay={120}>
+      <Reveal delay={120} variant="scale">
         <LogoWall />
       </Reveal>
 
@@ -64,7 +63,7 @@ export function Clients() {
           href="#contact"
           className="group inline-flex items-center gap-2 font-display text-lg font-semibold underline decoration-accent decoration-2 underline-offset-8 transition hover:decoration-[3px]"
         >
-          Let&rsquo;s Talk Business
+          Your Next Move
           <ArrowUpRight size={20} aria-hidden className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
       </Reveal>
@@ -75,12 +74,12 @@ export function Clients() {
 /* ───────── Capabilities: open list, hairlines, no heavy blocks ───────── */
 export function Services() {
   return (
-    <section id="services" className={`${wrap} py-20 md:py-28`}>
+    <section id="services" className={`${wrap} py-24 md:py-36`}>
       <Reveal>
         <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( What We Do )</p>
         <h2 className="mt-6 max-w-4xl text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
-          <span className="block">Eight Capabilities.</span>
-          <span className="block text-fg/55">One Team. Zero Hand-Offs.</span>
+          <span className="block line">Eight Capabilities.</span>
+          <span className="block line text-fg/55">One Team. Zero Hand-Offs.</span>
         </h2>
         <p className="mt-6 max-w-xl text-sm text-muted">
           Pick a single service or put the whole stack to work. Either way you get one accountable team.
@@ -124,7 +123,7 @@ export function Services() {
 /* ───────── Case studies (PLACEHOLDER numbers) ───────── */
 export function CaseStudies() {
   return (
-    <section id="cases" className="overflow-hidden py-20 md:py-28" aria-labelledby="cases-title">
+    <section id="cases" className="overflow-hidden py-24 md:py-36" aria-labelledby="cases-title">
       <div className={wrap}>
         <SectionHead
           eyebrow="Case studies"
@@ -163,12 +162,12 @@ export function CaseStudies() {
 /* ───────── Process ───────── */
 export function Process() {
   return (
-    <section id="process" className={`${wrap} py-20 md:py-28`}>
+    <section id="process" className={`${wrap} py-24 md:py-36`}>
       <Reveal>
         <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( How We Work )</p>
         <h2 className="mt-6 max-w-4xl text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
-          <span className="block">From First Call to</span>
-          <span className="block text-fg/55">Compounding Results.</span>
+          <span className="block line">From First Call to</span>
+          <span className="block line text-fg/55">Compounding Results.</span>
         </h2>
         <p className="mt-6 max-w-xl text-sm text-muted">
           A simple five-step process, so you always know what happens next.
@@ -192,7 +191,7 @@ export function Process() {
 /* ───────── Insights (PLACEHOLDER articles) ───────── */
 export function Insights() {
   return (
-    <section id="insights" className={`${wrap} py-20 md:py-28`}>
+    <section id="insights" className={`${wrap} py-24 md:py-36`}>
       <SectionHead
         eyebrow="Impactful insights"
         title="Go Further."
@@ -202,7 +201,7 @@ export function Insights() {
       <ul className="grid gap-6 md:grid-cols-3">
         {insights.map((a, i) => (
           <Reveal as="li" key={a.title} delay={i * 100}>
-            <article className="group flex h-full flex-col overflow-hidden rounded-[26px] bg-surface">
+            <article className="group flex h-full flex-col overflow-hidden rounded-[26px] bg-surface transition duration-300 hover:-translate-y-1.5 hover:shadow-[var(--shadow)]">
               <div className={`${a.grad} relative h-52 overflow-hidden`}>
                 <XMark className="absolute -right-6 -top-6 h-56 w-56 opacity-[0.16] transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110" />
                 <span className="absolute bottom-4 left-4 rounded-full bg-[#17171c] px-3 py-1 text-xs font-bold text-[#f5f5f0]">
@@ -232,33 +231,38 @@ export function Insights() {
 /* ───────── Founder story (PLACEHOLDER details) ───────── */
 export function Founder() {
   return (
-    <section id="founder" className="py-20 md:py-28">
-      <div className={wrap}>
-        <div className="grid items-center gap-10 overflow-hidden rounded-[32px] bg-surface p-6 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:p-12">
-          <Reveal>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[26px] bg-[#17171c]">
-              <Image
-                src="/founder/founders.jpg"
-                alt="Portrait of the NexRah founders"
-                fill
-                sizes="(min-width: 768px) 40vw, 90vw"
-                className="object-cover object-[50%_40%]"
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 p-6 pt-24 text-[#f5f5f0]"
-                style={{ background: "linear-gradient(to top, rgba(23,23,28,0.85), transparent)" }}
-              >
-                <p className="font-display text-2xl font-bold">Soumyadeep AKA Jiko</p>
-                <p className="text-sm opacity-85">Founder, NexRah</p>
+    <section id="founder" className="relative py-24 md:py-36">
+      {/* colour glows behind the glass, so the blur has something to refract */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="orb floaty absolute left-[6%] top-[18%] h-72 w-72 rounded-full md:h-96 md:w-96" style={{ background: "radial-gradient(circle, var(--orb-a), transparent 70%)" }} />
+        <div className="orb floaty absolute bottom-[8%] right-[4%] h-72 w-72 rounded-full md:h-[28rem] md:w-[28rem]" style={{ background: "radial-gradient(circle, var(--orb-b), transparent 70%)", animationDelay: "-3s" }} />
+      </div>
+
+      <div className={`${wrap} relative`}>
+        <div className="glass grid items-center gap-10 overflow-hidden rounded-[36px] p-5 md:grid-cols-[0.9fr_1.1fr] md:gap-16 md:p-10">
+          <Reveal variant="left">
+            {/* frosted frame around the photo */}
+            <div className="rounded-[30px] bg-white/10 p-2 ring-1 ring-inset ring-white/30">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[24px] bg-[#17171c]">
+                <Image
+                  src="/founder/founders.jpg"
+                  alt="Portrait of the NexRah founders"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 90vw"
+                  className="object-cover object-[50%_40%]"
+                />
+                <div className="absolute inset-x-4 bottom-4 rounded-2xl border border-white/25 bg-black/25 px-4 py-3 text-[#f5f5f0] shadow-[0_10px_30px_-10px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                  <p className="font-display text-xl font-bold">Soumyadeep AKA Jiko</p>
+                  <p className="text-sm opacity-85">Founder, NexRah</p>
+                </div>
               </div>
             </div>
           </Reveal>
-          <Reveal delay={120}>
-            <p className="mb-4 inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.14em] text-muted">
-              <span className="h-2 w-2 rounded-full bg-accent" aria-hidden="true" />
-              Founder story
+          <Reveal delay={120} variant="right">
+            <p className="mb-4 inline-flex items-center gap-2 font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">
+              ( Founder Story )
             </p>
-            <h2 className="text-[clamp(1.9rem,4vw,3.2rem)] font-light leading-[1.1]">
+            <h2 className="text-[clamp(1.9rem,4vw,3.2rem)] leading-[1.1]">
               Built in Noida to Bridge What Brands Have and What They Could Become.
             </h2>
             <div className="mt-6 space-y-4 text-sm text-muted">
@@ -270,7 +274,7 @@ export function Founder() {
                 So we built an agency where strategy, media and production sit together. The name says it
                 all: the &ldquo;Nex&rdquo; is what comes next, and &ldquo;Rah&rdquo; (राह) is the path that gets you there.
               </p>
-              <p className="rounded-2xl border border-dashed border-line p-4 text-sm">
+              <p className="rounded-2xl border border-dashed border-[color:var(--line)] bg-fg/[0.04] p-4 text-sm">
                 <strong className="text-fg">Placeholder:</strong> add the founder&rsquo;s real story here: background,
                 why NexRah was started, and the first client or moment that shaped it.
               </p>
@@ -288,7 +292,7 @@ export function Founder() {
 /* ───────── FAQ ───────── */
 export function Faq() {
   return (
-    <section id="faq" className={`${wrap} py-20 md:py-28`}>
+    <section id="faq" className={`${wrap} py-24 md:py-36`}>
       <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <SectionHead eyebrow="FAQs" title="Questions, Answered." sub="Can’t find yours? Ask us on the strategy call." />
         <div className="space-y-3">

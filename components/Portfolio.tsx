@@ -5,12 +5,30 @@ import { ArrowUpRight } from "lucide-react";
 import { portfolio, portfolioFilters } from "@/lib/content";
 import { SectionHead, XMark } from "./ui";
 
+// Pointer tilt + sheen on tiles (mouse only; CSS variables, no re-render)
+function onTilt(e: React.PointerEvent<HTMLAnchorElement>) {
+  if (e.pointerType !== "mouse") return;
+  const el = e.currentTarget;
+  const r = el.getBoundingClientRect();
+  const px = (e.clientX - r.left) / r.width;
+  const py = (e.clientY - r.top) / r.height;
+  el.style.setProperty("--ry", ((px - 0.5) * 9).toFixed(2) + "deg");
+  el.style.setProperty("--rx", ((0.5 - py) * 9).toFixed(2) + "deg");
+  el.style.setProperty("--sx", (px * 100).toFixed(1) + "%");
+  el.style.setProperty("--sy", (py * 100).toFixed(1) + "%");
+}
+function onTiltEnd(e: React.PointerEvent<HTMLAnchorElement>) {
+  const el = e.currentTarget;
+  el.style.setProperty("--ry", "0deg");
+  el.style.setProperty("--rx", "0deg");
+}
+
 export default function Portfolio() {
   const [active, setActive] = useState<string>("all");
   const items = active === "all" ? portfolio : portfolio.filter((p) => p.cat === active);
 
   return (
-    <section id="work" className="mx-auto max-w-[1240px] px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+    <section id="work" className="mx-auto max-w-[1240px] px-4 py-24 sm:px-6 md:py-36 lg:px-8">
       <SectionHead
         eyebrow="Portfolio"
         title="Selected Work."
@@ -35,10 +53,16 @@ export default function Portfolio() {
 
       <ul className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite">
         {items.map((p, i) => (
-          <li key={p.id} className={i % 5 === 0 ? "lg:row-span-2" : ""}>
+          <li
+            key={active + p.id}
+            className={`tile-in ${i % 5 === 0 ? "lg:row-span-2" : ""}`}
+            style={{ ["--i" as string]: i }}
+          >
             <a
               href="#contact"
-              className={`${p.grad} group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[26px] p-6 ${
+              onPointerMove={onTilt}
+              onPointerLeave={onTiltEnd}
+              className={`tilt ${p.grad} group relative flex h-full min-h-[280px] flex-col justify-between overflow-hidden rounded-[26px] p-6 ${
                 i % 5 === 0 ? "lg:min-h-[580px]" : ""
               }`}
               aria-label={`${p.title} (${p.tag}, placeholder project)`}

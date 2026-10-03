@@ -1,5 +1,6 @@
+import Link from "next/link";
 import { ArrowUpRight, Heart } from "lucide-react";
-import { contactInfo, nav, services, socials } from "@/lib/content";
+import { contactInfo, legalLinks, nav, services, socials } from "@/lib/content";
 import { BackToTop, NoidaClock } from "./FooterBits";
 
 const head = "mb-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#8f8f88]";
@@ -43,16 +44,16 @@ export default function Footer() {
               </span>
             </a>
           </div>
-          <a
-            href="#contact"
+          <Link
+            href="/#contact"
             className="btn shrink-0 self-start lg:self-end"
             style={{ background: "#cbdc3f", color: "#17171c" }}
           >
             <span className="dot" style={{ background: "#17171c", color: "#cbdc3f" }} aria-hidden="true">
               <ArrowUpRight size={18} strokeWidth={2.5} />
             </span>
-            Let&rsquo;s Talk Business
-          </a>
+            Your Next Move
+          </Link>
         </div>
       </div>
 
@@ -61,7 +62,7 @@ export default function Footer() {
           <nav aria-label="Website">
             <h2 className={head}>Website</h2>
             <ul className="space-y-3.5">
-              {[{ label: "Home", href: "#top" }, ...nav, { label: "Contact", href: "#contact" }].map((l) => (
+              {[{ label: "Home", href: "/#top" }, ...nav, { label: "Contact", href: "/#contact" }].map((l) => (
                 <li key={l.label}>
                   <a href={l.href} className={link}>
                     {l.label}
@@ -76,9 +77,9 @@ export default function Footer() {
             <ul className="space-y-3.5">
               {services.map((s) => (
                 <li key={s.key}>
-                  <a href="#services" className={link}>
+                  <Link href="/#services" className={link}>
                     {s.title}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -126,6 +127,22 @@ export default function Footer() {
         <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-white/12 pt-6 text-[#b4b4ac]">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <p>© {new Date().getFullYear()} NexRah. All rights reserved.</p>
+            <ul className="flex items-center gap-5 text-[#f5f5f0]">
+              {legalLinks.map((l) => (
+                <li key={l.label}>
+                  {l.url ? (
+                    <Link href={l.url} className="legal-link">
+                      {l.label}
+                    </Link>
+                  ) : (
+                    <span className="text-[#f5f5f0]/45">
+                      {l.label}
+                      <span className="sr-only"> (link coming soon)</span>
+                    </span>
+                  )}
+                </li>
+              ))}
+            </ul>
             <p className="flex items-center gap-1.5 text-[#f5f5f0]">
               Built with <Heart size={15} aria-label="love" className="heart-beat fill-[#ff6b6b] text-[#ff6b6b]" /> in India
             </p>

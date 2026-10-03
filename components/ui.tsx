@@ -9,11 +9,13 @@ export function Reveal({
   delay = 0,
   className = "",
   as: Tag = "div",
+  variant = "up",
 }: {
   children: ReactNode;
   delay?: number;
   className?: string;
   as?: "div" | "li" | "article" | "section";
+  variant?: "up" | "left" | "right" | "scale";
 }) {
   const ref = useRef<HTMLElement>(null);
   useEffect(() => {
@@ -39,7 +41,7 @@ export function Reveal({
   return (
     <Comp
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`reveal ${className}`}
+      className={`reveal ${variant !== "up" ? `reveal-${variant} ` : ""}${className}`}
       style={{ ["--d" as string]: `${delay}ms` }}
     >
       {children}
@@ -111,7 +113,9 @@ export function SectionHead({
             {eyebrow}
           </p>
         )}
-        <h2 className="text-[clamp(2rem,4.6vw,3.6rem)] font-light leading-[1.08]">{title}</h2>
+        <h2 className="text-[clamp(2rem,4.6vw,3.6rem)] leading-[1.08]">
+          <span className="line">{title}</span>
+        </h2>
         {sub && <p className="mt-5 max-w-2xl text-sm text-muted">{sub}</p>}
       </Reveal>
       {action}

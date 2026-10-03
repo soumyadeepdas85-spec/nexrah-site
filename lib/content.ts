@@ -2,15 +2,13 @@
 // client names, results, photos and founder details before launch.
 
 export const nav = [
-  { label: "Capabilities", href: "#services" },
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "#process" },
-  { label: "Insights", href: "#insights" },
-  { label: "Founder", href: "#founder" },
-  { label: "FAQs", href: "#faq" },
+  { label: "Capabilities", href: "/#services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Our DNA", href: "/our-dna" },
 ];
 
 export type ServiceKey =
+  | "ai"
   | "performance"
   | "seo"
   | "social"
@@ -28,18 +26,18 @@ export const services: {
   grad: string;
 }[] = [
   {
-    key: "performance",
-    title: "Performance Marketing",
-    blurb: "Paid media on Meta and Google, built around cost per lead and return on ad spend.",
-    points: ["Meta & Google Ads", "Funnel & landing pages", "Weekly optimisation"],
-    grad: "grad-lime",
+    key: "ai",
+    title: "AI Websites",
+    blurb: "Fast, modern websites with AI built in, from smart chat to search-ready content.",
+    points: ["Design & development", "AI chat & automation", "Search & AI-ready content"],
+    grad: "grad-sky",
   },
   {
-    key: "seo",
-    title: "SEO & AI Search",
-    blurb: "Be found on Google and cited by ChatGPT, Gemini and Perplexity.",
-    points: ["Technical & on-page SEO", "GEO / AEO content", "Citation tracking"],
-    grad: "grad-sky",
+    key: "branding",
+    title: "Branding, Web & Print",
+    blurb: "Identities, websites and ad creative that look like one brand everywhere.",
+    points: ["Brand identity", "Website design & build", "Print & ad creative"],
+    grad: "grad-aqua",
   },
   {
     key: "social",
@@ -49,11 +47,18 @@ export const services: {
     grad: "grad-peach",
   },
   {
-    key: "branding",
-    title: "Branding, Web & Creative",
-    blurb: "Identities, websites and ad creative that look like one brand everywhere.",
-    points: ["Brand identity", "Website design & build", "Ad creative"],
-    grad: "grad-aqua",
+    key: "seo",
+    title: "SEO & AI Search",
+    blurb: "Be found on Google and cited by ChatGPT, Gemini and Perplexity.",
+    points: ["Technical & on-page SEO", "GEO / AEO content", "Citation tracking"],
+    grad: "grad-sky",
+  },
+  {
+    key: "performance",
+    title: "Performance Marketing",
+    blurb: "Paid media on Meta and Google, built around cost per lead and return on ad spend.",
+    points: ["Meta & Google Ads", "Funnel & landing pages", "Weekly optimisation"],
+    grad: "grad-lime",
   },
   {
     key: "packaging",
@@ -212,4 +217,11 @@ export const socials: { key: "facebook" | "instagram" | "linkedin" | "youtube"; 
   { key: "instagram", label: "Instagram", url: "" },
   { key: "linkedin", label: "LinkedIn", url: "" },
   { key: "youtube", label: "YouTube", url: "" },
+];
+
+// Footer legal links. Paste the full URL (or a path like "/privacy") once the pages exist;
+// leave "" and the link shows dimmed and inactive, like the social links.
+export const legalLinks: { label: string; url: string }[] = [
+  { label: "Privacy Policy", url: "" },
+  { label: "Terms & Conditions", url: "" },
 ];

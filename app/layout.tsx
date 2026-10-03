@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import LiveBackground from "@/components/LiveBackground";
+import MotionExtras from "@/components/MotionExtras";
 
 const bricolage = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -79,7 +81,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LiveBackground />
+        <MotionExtras />
+        {children}
+      </body>
     </html>
   );
 }

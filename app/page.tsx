@@ -1,4 +1,3 @@
-import LiveBackground from "@/components/LiveBackground";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Portfolio from "@/components/Portfolio";
@@ -7,11 +6,14 @@ import Footer from "@/components/Footer";
 import { CaseStudies, Faq, Founder, Insights, Clients, Process, ServiceTicker, Services } from "@/components/Sections";
 
 const SHOW_CASE_STUDIES = false;
+// Hidden for now: set to true to bring each section back (also re-add its link in `nav` in lib/content.ts)
+const SHOW_PORTFOLIO = false;
+const SHOW_INSIGHTS = false;
+const SHOW_FAQ = false;
 
 export default function Home() {
   return (
     <>
-      <LiveBackground />
       <a href="#main" className="skip-link">
         Skip to main content
       </a>
@@ -20,13 +22,13 @@ export default function Home() {
         <Hero />
         <ServiceTicker />
         <Services />
-        <Portfolio />
+        {SHOW_PORTFOLIO && <Portfolio />}
         {/* Case studies hidden for now: set SHOW_CASE_STUDIES to true to bring it back */}
         {SHOW_CASE_STUDIES && <CaseStudies />}
         <Process />
-        <Insights />
+        {SHOW_INSIGHTS && <Insights />}
         <Founder />
-        <Faq />
+        {SHOW_FAQ && <Faq />}
         <Clients />
         <Contact />
       </main>

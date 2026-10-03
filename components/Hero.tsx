@@ -5,6 +5,8 @@ import { pillars } from "@/lib/content";
 import { CtaLink, Reveal, XMark } from "./ui";
 
 // Set to true to show the Grow / Create / Experience cards under the headline.
+// Hidden until the Portfolio page/section is live
+const SHOW_SEE_WORK = false;
 const SHOW_PILLARS = false;
 
 function chipSrc(name: string) {
@@ -85,9 +87,11 @@ export default function Hero() {
 
           <div className="mt-14 flex flex-wrap items-center justify-center gap-3 md:mt-16">
             <CtaLink href="#contact">Your Next Move</CtaLink>
-            <CtaLink href="#work" ghost>
-              See Our Work
-            </CtaLink>
+            {SHOW_SEE_WORK && (
+              <CtaLink href="#work" ghost>
+                See Our Work
+              </CtaLink>
+            )}
           </div>
         </div>
 

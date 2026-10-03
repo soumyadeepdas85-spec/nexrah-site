@@ -3,8 +3,9 @@
 
 export const nav = [
   { label: "Capabilities", href: "/#services" },
-  { label: "Portfolio", href: "/portfolio" },
-  { label: "Our DNA", href: "/our-dna" },
+  // Hidden until these pages exist. Add them back here when ready:
+  // { label: "Portfolio", href: "/portfolio" },
+  // { label: "Our DNA", href: "/our-dna" },
 ];
 
 export type ServiceKey =

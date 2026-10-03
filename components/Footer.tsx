@@ -7,6 +7,9 @@ const head = "mb-6 text-xs font-semibold uppercase tracking-[0.16em] text-[#8f8f
 const link = "inline-flex items-center gap-2 text-[#f5f5f0] transition hover:text-[#cbdc3f]";
 
 export default function Footer() {
+  // Only links that have a real URL are shown; empty ones stay hidden
+  const liveSocials = socials.filter((s) => s.url);
+  const liveLegal = legalLinks.filter((l) => l.url);
   return (
     <footer className="grain relative overflow-hidden" style={{ background: "var(--footer-bg)", color: "#f5f5f0" }}>
       {/* brand glows */}
@@ -58,7 +61,7 @@ export default function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-[1360px] px-5 pb-8 pt-20 sm:px-8 lg:px-10 lg:pt-28">
-        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-[0.8fr_1.1fr_1.5fr_0.8fr] lg:gap-10">
+        <div className={`grid gap-12 sm:grid-cols-2 ${liveSocials.length ? "lg:grid-cols-[0.8fr_1.1fr_1.5fr_0.8fr]" : "lg:grid-cols-[0.8fr_1.1fr_1.5fr]"} lg:gap-10`}>
           <nav aria-label="Website">
             <h2 className={head}>Website</h2>
             <ul className="space-y-3.5">
@@ -102,47 +105,37 @@ export default function Footer() {
             </ul>
           </address>
 
-          <nav aria-label="Social media">
-            <h2 className={head}>Social</h2>
-            <ul className="space-y-3.5">
-              {socials.map((s) => (
-                <li key={s.key}>
-                  {s.url ? (
+          {liveSocials.length > 0 && (
+            <nav aria-label="Social media">
+              <h2 className={head}>Social</h2>
+              <ul className="space-y-3.5">
+                {liveSocials.map((s) => (
+                  <li key={s.key}>
                     <a href={s.url} target="_blank" rel="noopener noreferrer" className={link}>
                       {s.label} <ArrowUpRight size={16} aria-hidden />
                       <span className="sr-only"> (opens in a new tab)</span>
                     </a>
-                  ) : (
-                    <span className="inline-flex items-center gap-2 text-[#f5f5f0]/40">
-                      {s.label} <ArrowUpRight size={16} aria-hidden />
-                      <span className="sr-only"> (link coming soon)</span>
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </nav>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
         </div>
 
         <div className="mt-14 flex flex-wrap items-center justify-between gap-x-8 gap-y-4 border-t border-white/12 pt-6 text-[#b4b4ac]">
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <p>© {new Date().getFullYear()} NexRah. All rights reserved.</p>
-            <ul className="flex items-center gap-5 text-[#f5f5f0]">
-              {legalLinks.map((l) => (
-                <li key={l.label}>
-                  {l.url ? (
+            {liveLegal.length > 0 && (
+              <ul className="flex items-center gap-5 text-[#f5f5f0]">
+                {liveLegal.map((l) => (
+                  <li key={l.label}>
                     <Link href={l.url} className="legal-link">
                       {l.label}
                     </Link>
-                  ) : (
-                    <span className="text-[#f5f5f0]/45">
-                      {l.label}
-                      <span className="sr-only"> (link coming soon)</span>
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            )}
             <p className="flex items-center gap-1.5 text-[#f5f5f0]">
               Built with <Heart size={15} aria-label="love" className="heart-beat fill-[#ff6b6b] text-[#ff6b6b]" /> in India
             </p>

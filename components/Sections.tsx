@@ -78,7 +78,7 @@ export function Services() {
       <Reveal>
         <p className="font-mono text-[13px] font-medium uppercase tracking-[0.3em] text-accent-text">( What We Do )</p>
         <h2 className="mt-6 max-w-4xl text-[clamp(2.2rem,5.6vw,4.6rem)] leading-[1.04] tracking-[-0.035em]">
-          <span className="block line">Eight Capabilities.</span>
+          <span className="block line">Nine Capabilities.</span>
           <span className="block line text-fg/55">One Team. Zero Hand-Offs.</span>
         </h2>
         <p className="mt-6 max-w-xl text-sm text-muted">
